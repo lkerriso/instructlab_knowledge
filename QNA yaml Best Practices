@@ -1,0 +1,9 @@
+Context chunks must exactly match content in markdown file
+The markdown file can include addtl content and it WILL be included in the context window
+Markdown / qna cannot include embedded links. It won’t error they’re just taking up token space unnecessarily.
+Only 5 context chunks, and only 3 qna pairs per context. Addtl will be ignored.
+The qna is used as examples for SDG. The actual questions are not directly used. So that’s why there will be maybe some error/issue trying to ask those specific questions. Probably best to test the questions generated in the knowledge_train_msgs file. 
+Don’t use AI to create qna, the questions need to capture the intent of the users. Language model would create basic stuff that might be completely useless.
+   A. If you have a huge md file, you want to select the contexts very specifically. You want to spread it out from the document, maybe not randomly chosen. There is a best practice of doing this. The LLM might choose the first 5 paragraphs as contexts.
+   B. You could maybe have a clever prompt that would prompt the LLM to help you decide what topics to write qnas for.
+Yes/No question/answers aren’t as helpful as answers that expound upon the question or something.
